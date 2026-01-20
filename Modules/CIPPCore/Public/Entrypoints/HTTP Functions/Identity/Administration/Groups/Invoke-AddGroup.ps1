@@ -20,7 +20,7 @@ function Invoke-AddGroup {
             $Result = New-CIPPGroup -GroupObject $GroupObject -TenantFilter $tenant -APIName $APIName -ExecutingUser $Request.Headers.'x-ms-client-principal-name'
 
             if ($Result.Success) {
-                "Successfully created group $($GroupObject.displayName) for $($tenant)"
+                "Successfully created group $($GroupObject.displayName) for $($tenant) id $($Result.GroupId)"
                 $StatusCode = [HttpStatusCode]::OK
             } else {
                 throw $Result.Message
